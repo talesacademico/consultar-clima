@@ -1,0 +1,54 @@
+* {
+    font-family: "Lato", sans-serif;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    align-items: center;
+}
+
+.from {
+    padding: 12px;
+    border: none;
+    border-bottom: solid 1px #ccc;
+    outline: none;
+    color: white;
+    font-weight: bold;
+    background: none;
+    font-family: "Lato", sans-serif;
+}
+
+input {
+    font-size: 18px;
+}
+
+button {
+    font-size: 30px;
+    color: #ccc;
+    border: none !important;
+    cursor: pointer;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    background: linear-gradient(to right, rgb(22, 34, 42), rgb(58, 96, 115));
+    color: #fff;
+}
+
+h1 {
+    margin-bottom: 5px;
+    font-weight: 300;
+    font-size: 3rem;
+    max-width: 800px;
+}
+
+form {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+}
