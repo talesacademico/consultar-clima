@@ -9,32 +9,29 @@
         return {
             init() {
                 this.events()
-                this.getLocation()
+                this.getlocalization()
             },
             events() {
                 buttonForm.addEventListener('click', (e) => {
-                    this.reset()
-                    const payload = inputForm.value || 'serro'
                     e.preventDefault()
+                    this.reset()
+                    let payload = inputForm.value || 'serro'
+                    payload = 'q=' + payload
                     this.get(payload)
                 })
             },
 
-            get(city) {
+            get(payload) {
                 const ajax = new XMLHttpRequest()
                 ajax.open('GET',
-                    `https://api.openweathermap.org/data/2.5/weather?q=
-                    ${city}&appid=${key}&units=metric&lang=pt_br`)
-
+                    `https://api.openweathermap.org/data/2.5/weather?${payload}&appid=${key}&units=metric&lang=pt_br`)
                 ajax.send()
                 ajax.addEventListener('readystatechange', this.ready)
             },
 
-            ready(event) {
-                const ajax = event.target
-                if (ajax.status === 200 && ajax.readyState === 4) {
-                    const res = JSON.parse(ajax.responseText)
-
+            ready() {
+                if (this.status === 200 && this.readyState === 4) {
+                    const res = JSON.parse(this.responseText)
                     img.src = `http://openweathermap.org/img/wn/${res.weather[0].icon}@2x.png`;
                     titleDescription.textContent = `${res.name} - ${res.main.temp}° ${res.weather[0].description}`
                     return
@@ -42,34 +39,24 @@
                 titleDescription.textContent = 'Cidade Invalida'
             },
 
-            getLocation() {
+            getlocalization() {
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(this.successFunction, this.erroFunction);
                 }
 
             },
-            successFunction: function(position) {
+            successFunction(position) {
                 const lat = position.coords.latitude;
                 const long = position.coords.longitude;
-
-                const ajax = new XMLHttpRequest()
-                console.log(lat, long)
-                ajax.open('GET', `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${key}&units=metric&lang=pt_br`)
-                ajax.send()
-
-                ajax.addEventListener('readystatechange', function(e) {
-                    app().ready(e)
-                })
-
+                const payload = `lat=${lat}&lon=${long}`
+                app().get(payload)
             },
 
             erroFunction() {
                 titleDescription.textContent = 'Insira sua cidade'
             },
-
             reset() {
                 img.scr = ''
-
             },
         }
     }
