@@ -1,6 +1,6 @@
 <div align="center" >
   <h1 align="center" >  
-     CRUD</h1> 
+     Consultar Clima</h1> 
   
   <p>Print Aplicação</p>
  <img src="./assets/cap1.jpeg" style="max-with:500px"/>
@@ -33,6 +33,6 @@ git clone https://github.com/itals53fs/consultar-clima.git
 
 <i> Crie uma conta em <a href="https://openweathermap.org/api" target="_blank"><cite>Weather API </cite> </i></a>
 
-Faça a inscrição em <cite>Current Weather Data</cite> e key do index em ``` src/index.js ```
+Faça a inscrição em <cite>Current Weather Data</cite> e substitua a key do index em ``` src/index.js ```
 
 <i>abra o aquivo index.html em um navegador ou suba com o liveServer extensão do vsCode</i>
