@@ -31,7 +31,7 @@
 git clone https://github.com/itals53fs/consultar-clima.git
 ```
 
-<i> Crie uma conta em <a href="https://openweathermap.org/api"><cite>Weather API </cite> </i>
+<i> Crie uma conta em <a href="https://openweathermap.org/api" target="_blank"><cite>Weather API </cite> </i></a>
 
 Faça a inscrição em <cite>Current Weather Data</cite> e key do index em ``` src/index.js ```
 
