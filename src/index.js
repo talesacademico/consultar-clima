@@ -4,7 +4,7 @@
     const buttonForm = document.querySelector('button')
     const titleDescription = document.querySelector('h1')
     const img = document.querySelector('.img')
-    const key = 'ee71b3228acc9068241e9d46defcd254'
+    const key = ''
     const app = () => {
         return {
             init() {
