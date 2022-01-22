@@ -5,7 +5,7 @@
     const titleDescription = document.querySelector('h1')
     const img = document.querySelector('.img')
     const icon = document.querySelector('.icon')
-    const key = 'ee71b3228acc9068241e9d46defcd254'
+    const key = ''
     const fragment = document.createDocumentFragment()
     const progress = document.createElement('progress')
 
