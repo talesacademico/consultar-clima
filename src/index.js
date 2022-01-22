@@ -4,7 +4,13 @@
     const buttonForm = document.querySelector('button')
     const titleDescription = document.querySelector('h1')
     const img = document.querySelector('.img')
-    const key = ''
+    const icon = document.querySelector('.icon')
+    const key = 'ee71b3228acc9068241e9d46defcd254'
+    const fragment = document.createDocumentFragment()
+    const progress = document.createElement('progress')
+
+    fragment.appendChild(progress)
+
     const app = () => {
         return {
             init() {
@@ -15,7 +21,8 @@
                 buttonForm.addEventListener('click', (e) => {
                     e.preventDefault()
                     this.reset()
-                    let payload = inputForm.value || 'serro'
+                    this.load()
+                    let payload = inputForm.value
                     payload = 'q=' + payload
                     this.get(payload)
                 })
@@ -33,10 +40,11 @@
                 if (this.status === 200 && this.readyState === 4) {
                     const res = JSON.parse(this.responseText)
                     img.src = `http://openweathermap.org/img/wn/${res.weather[0].icon}@2x.png`;
-                    titleDescription.textContent = `${res.name} - ${res.main.temp}° ${res.weather[0].description}`
+                    icon.href = img.src
+                    titleDescription.textContent = `${res.name} _ ${res.main.temp}° ${res.weather[0].description}`
                     return
                 }
-                titleDescription.textContent = 'Cidade Invalida'
+                titleDescription.textContent = 'Cidade Inválida'
             },
 
             getlocalization() {
@@ -55,8 +63,13 @@
             erroFunction() {
                 titleDescription.textContent = 'Insira sua cidade'
             },
+            load() {
+                titleDescription.appendChild(progress)
+            },
+
             reset() {
                 img.scr = ''
+                titleDescription.textContent = ''
             },
         }
     }
