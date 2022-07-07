@@ -5,20 +5,20 @@
     const titleDescription = document.querySelector('h1')
     const img = document.querySelector('.img')
     const icon = document.querySelector('.icon')
-    const key = ''
-    const fragment = document.createDocumentFragment()
+    const key = 'ee71b3228acc9068241e9d46defcd254'
+    const baseURL = 'https://api.openweathermap.org/data/2.5/weather?'
+    //const fragment = document.createDocumentFragment()
     const progress = document.createElement('progress')
-
-    fragment.appendChild(progress)
-
+    //fragment.appendChild(progress)
+    
     const app = () => {
         return {
-            init() {
+            init(){
                 this.events()
                 this.getlocalization()
             },
             events() {
-                buttonForm.addEventListener('click', (e) => {
+                buttonForm.addEventListener('click', (e)=>{
                     e.preventDefault()
                     this.reset()
                     this.load()
@@ -31,7 +31,7 @@
             get(payload) {
                 const ajax = new XMLHttpRequest()
                 ajax.open('GET',
-                    `https://api.openweathermap.org/data/2.5/weather?${payload}&appid=${key}&units=metric&lang=pt_br`)
+                    `${baseURL}${payload}&appid=${key}&units=metric&lang=pt_br`)
                 ajax.send()
                 ajax.addEventListener('readystatechange', this.ready)
             },
@@ -53,13 +53,13 @@
                 }
 
             },
+            
             successFunction(position) {
                 const lat = position.coords.latitude;
                 const long = position.coords.longitude;
                 const payload = `lat=${lat}&lon=${long}`
                 app().get(payload)
             },
-
             erroFunction() {
                 titleDescription.textContent = 'Insira sua cidade'
             },
